@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Website</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="../public/css/style.css" />
+
+    <!-- fontawesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="container-main">
+      <div class="navbar">
+        <!-- logo -->
+        <div id="logo">football catalogue</div>
+
+      </div>
+
+      <main>
+        <div class="player-profile-container">
+          <div class="player-info">
+            <h2 class="player-name">{{apidata.player.name}}</h2>
+            <dl class="player-stats">
+              <div>
+                <dt class="player-stat">Age</dt>
+                <dd class="player-stat-value">{{apidata.player.age}}</dd>
+              </div>
+
+              <div>
+                <dt class="player-stat">Birth Place</dt>
+                <dd
+                  class="player-stat-value"
+                >{{apidata.player.birth.place}}</dd>
+              </div>
+
+              <div>
+                <dt class="player-stat">Height</dt>
+                <dd class="player-stat-value">{{apidata.player.height}}</dd>
+              </div>
+
+              <div>
+                <dt class="player-stat">Weight</dt>
+                <dd class="player-stat-value">{{apidata.player.weight}}</dd>
+              </div>
+
+            </dl>
+          </div>
+          <div class="player-image">
+            <img src="{{apidata.player.photo}}" alt="player" srcset="" />
+            <img class="player-country-badge" src="{{logo}}" alt="flag" />
+          </div>
+        </div>
+
+        {{#each apidata.statistics}}
+          <div class="player-profile-league-container">
+            <div class="league">
+              <img src="{{this.league.logo}}" alt="" />
+              <h3 class="league-name">{{this.league.name}}</h3>
+            </div>
+            <div>
+              <table class="league-table">
+                <thead>
+                  <tr>
+                    <th>Appearences</th>
+                    <th>Lineups</th>
+                    <th>Minutes</th>
+                    <th>Position</th>
+                    <th>Rating</th>
+                    <th>Goals</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td>{{this.games.appearences}}</td>
+                  <td>{{this.games.lineups}}</td>
+                  <td>{{this.games.minutes}}</td>
+                  <td>{{this.games.position}}</td>
+                  <td>{{this.games.rating}}</td>
+                  <td>{{this.goals.total}}</td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        {{/each}}
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Website</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="../public/css/style.css" />
+
+    <!-- fontawesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="container-main">
+      <div class="navbar">
+        <!-- logo -->
+        <div id="logo">Football Calalogue</div>
+
+        <!-- navbar -->
+      </div>
+
+      <main>
+        <div id="searchWrapper">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search for a character"
+            onkeyup="search()"
+          />
+        </div>
+        <div id="country-result" class="display-box">
+          {{#each apidata}}
+            <a href="/country/{{this.name}}" class="country-card-anchor">
+              <div class="country-card">
+                <img src="{{this.flag}}" alt="" srcset="" />
+                <div class="image__overlay image__overlay--blur">
+                  <div class="country-card-title">{{this.name}}</div>
+                </div>
+              </div>
+            </a>
+
+          {{/each}}
+        </div>
+      </main>
+    </div>
+    <script>
+      function search() { var anchor =
+      document.getElementsByClassName("country-card-anchor");
+      console.log("Anchor lisytt: ", anchor); var name_div =
+      document.getElementsByClassName("country-card-title");
+      console.log("name_div list: ", name_div); var input =
+      document.getElementById("searchBar"); var processed_input =
+      input.value.toUpperCase(); console.log(processed_input); for (i = 0; i <
+      anchor.length; i++) { var name = name_div[i].innerText.toUpperCase();
+      console.log(name); if (name.indexOf(processed_input) > -1) {
+      anchor[i].style.display = ""; } else { anchor[i].style.display = "none"; }
+      } }
+    </script>
+  </body>
+</html>

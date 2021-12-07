@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Website</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="../public/css/style.css" />
+
+    <!-- fontawesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="container-main">
+      <div class="navbar">
+        <!-- logo -->
+        <div id="logo">football catalogue</div>
+
+      </div>
+
+      <main>
+        <div id="searchWrapper">
+          <input
+            type="text"
+            name="searchBar"
+            id="searchBar"
+            placeholder="Search for a character"
+            onkeyup="search()"
+          />
+        </div>
+        <div id="player-result" class="display-box">
+          {{#each apidata}}
+            <a href="/player/{{this.player.id}}" class="player-card-anchor">
+              <div class="player-card">
+                <img src="{{this.player.photo}}" alt="" srcset="" />
+                <div class="player-card-title">{{this.player.name}}</div>
+              </div>
+            </a>
+
+          {{/each}}
+        </div>
+      </main>
+    </div>
+    <script>
+      function search() { var anchor =
+      document.getElementsByClassName("player-card-anchor"); var name_div =
+      document.getElementsByClassName("player-card-title"); var input =
+      document.getElementById("searchBar"); var processed_input =
+      input.value.toUpperCase(); for (i = 0; i < anchor.length; i++) { var name
+      = name_div[i].innerText.toUpperCase(); if (name.indexOf(processed_input) >
+      -1) { anchor[i].style.display = ""; } else { anchor[i].style.display =
+      "none"; } } }
+    </script>
+  </body>
+</html>

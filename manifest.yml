@@ -1,0 +1,6 @@
+applications:
+  - path: .
+    name: Football-Catalogue-Utkarsh
+    memory: 256M
+    instances: 1
+    buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
